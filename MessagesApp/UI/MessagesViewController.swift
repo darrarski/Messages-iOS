@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class MessagesViewController: UIViewController {
 
     override func loadView() {
         view = UIView(frame: .zero)
