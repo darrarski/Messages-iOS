@@ -10,9 +10,14 @@ class MessagesViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: View
+
+    var messagesView: MessagesView! {
+        return view as? MessagesView
+    }
+
     override func loadView() {
-        view = UIView(frame: .zero)
-        view.backgroundColor = .white
+        view = MessagesView()
     }
 
 }
