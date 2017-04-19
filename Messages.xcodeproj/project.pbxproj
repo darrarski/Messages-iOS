@@ -125,6 +125,7 @@
 			buildConfigurationList = 31F689FF1EA7FEC500D1D175 /* Build configuration list for PBXNativeTarget "MessagesApp" */;
 			buildPhases = (
 				40E78A4F012156E5A64C2424 /* [CP] Check Pods Manifest.lock */,
+				31B270211EA802E80036354B /* SwiftLint */,
 				31F689E91EA7FEC500D1D175 /* Sources */,
 				31F689EA1EA7FEC500D1D175 /* Frameworks */,
 				31F689EB1EA7FEC500D1D175 /* Resources */,
@@ -187,6 +188,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		31B270211EA802E80036354B /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd MessagesApp/; ${PODS_ROOT}/SwiftLint/swiftlint";
+		};
 		3DBE49281CBF51A7BDB22C2D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
