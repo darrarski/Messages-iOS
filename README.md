@@ -4,6 +4,8 @@
 
 Messages app prototype for iOS
 
+**Notice:** current state is only for R&D purposes, work in progress
+
 ## License
 
 MIT License - check out [LICENSE](LICENSE) file.
