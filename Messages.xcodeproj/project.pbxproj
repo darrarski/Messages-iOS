@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		31B270231EA8144D0036354B /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B270221EA8144D0036354B /* MessagesView.swift */; };
+		31B270251EA81C1A0036354B /* MessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B270241EA81C1A0036354B /* MessagesCell.swift */; };
 		31B270271EA8325E0036354B /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 31B270261EA8325E0036354B /* quotes.json */; };
 		31F689F11EA7FEC500D1D175 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F689F01EA7FEC500D1D175 /* AppDelegate.swift */; };
 		31F689F31EA7FEC500D1D175 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F689F21EA7FEC500D1D175 /* MessagesViewController.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		31B270221EA8144D0036354B /* MessagesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
+		31B270241EA81C1A0036354B /* MessagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCell.swift; sourceTree = "<group>"; };
 		31B270261EA8325E0036354B /* quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quotes.json; sourceTree = "<group>"; };
 		31F689ED1EA7FEC500D1D175 /* MessagesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessagesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F689F01EA7FEC500D1D175 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				31F689F91EA7FEC500D1D175 /* LaunchScreen.storyboard */,
+				31B270241EA81C1A0036354B /* MessagesCell.swift */,
 				31B270221EA8144D0036354B /* MessagesView.swift */,
 				31F689F21EA7FEC500D1D175 /* MessagesViewController.swift */,
 			);
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31F689F31EA7FEC500D1D175 /* MessagesViewController.swift in Sources */,
+				31B270251EA81C1A0036354B /* MessagesCell.swift in Sources */,
 				31F689F11EA7FEC500D1D175 /* AppDelegate.swift in Sources */,
 				31B270231EA8144D0036354B /* MessagesView.swift in Sources */,
 			);
