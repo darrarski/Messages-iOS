@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class MessagesViewController: UIViewController {
 
@@ -22,6 +23,7 @@ class MessagesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        embedCollectionViewController()
         setupCollectionView()
     }
 
@@ -41,19 +43,20 @@ class MessagesViewController: UIViewController {
 
     // MARK: CollectionView
 
-    let collectionViewLayout: UICollectionViewFlowLayout = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        return layout
-    }()
+    let collectionViewController = MessagesCollectionViewController()
+
+    private func embedCollectionViewController() {
+        addChildViewController(collectionViewController)
+        messagesView.collectionViewContainer.addSubview(collectionViewController.view)
+        collectionViewController.view.snp.makeConstraints { $0.edges.equalToSuperview() }
+        collectionViewController.didMove(toParentViewController: self)
+    }
 
     private func setupCollectionView() {
-        messagesView.collectionView.register(MessagesCell.self, forCellWithReuseIdentifier: "cell")
-        messagesView.collectionView.dataSource = self
-        messagesView.collectionView.delegate = self
-        messagesView.collectionView.collectionViewLayout = collectionViewLayout
+        collectionViewController.collectionView?.register(MessagesCell.self, forCellWithReuseIdentifier: "cell")
+        collectionViewController.collectionView?.dataSource = self
+        collectionViewController.collectionView?.delegate = self
+        collectionViewController.collectionView?.keyboardDismissMode = .interactive
     }
 
     fileprivate func configureIncomingMessage(cell: MessagesCell) {
