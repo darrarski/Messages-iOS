@@ -7,4 +7,5 @@ target 'MessagesApp' do
   pod 'SwiftLint', '~> 0.18'
   pod 'SnapKit', '~> 3.2'
   pod 'Reveal-SDK', :configurations => ['Debug']
+  pod 'Diff', '~> 0.5'
 end
