@@ -24,11 +24,14 @@ class MessagesViewController: UIViewController {
         super.viewDidLoad()
         embedCollectionViewController()
         setupCollectionView()
+        messages = loadMessages()
     }
 
     // MARK: Messages
 
-    let messages: [String] = {
+    var messages = [String]()
+
+    private func loadMessages() -> [String] {
         let bundle = Bundle(for: MessagesViewController.self)
         guard let path = bundle.path(forResource: "quotes", ofType: "json") else { fatalError() }
         guard let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path)) else { fatalError() }
@@ -38,7 +41,7 @@ class MessagesViewController: UIViewController {
         var messages = [String]()
         (1...10).enumerated().forEach { _ in messages += quotes }
         return messages
-    }()
+    }
 
     // MARK: CollectionView
 
