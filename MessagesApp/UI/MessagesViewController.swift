@@ -1,5 +1,4 @@
 import UIKit
-import SnapKit
 
 class MessagesViewController: UIViewController {
 
@@ -112,23 +111,10 @@ class MessagesViewController: UIViewController {
     }
 
     override var inputAccessoryView: UIView? {
-        return toolbar
+        return messagesInputAccessoryView
     }
 
-    private let toolbar: UIToolbar = {
-        let toolbar = UIToolbar(frame: .zero)
-        toolbar.snp.makeConstraints {
-            $0.height.equalTo(50)
-        }
-        let textView = UITextView(frame: .zero)
-        textView.layer.borderWidth = 0.5
-        textView.layer.borderColor = UIColor.black.cgColor
-        toolbar.addSubview(textView)
-        textView.snp.makeConstraints {
-            $0.edges.equalTo(UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
-        }
-        return toolbar
-    }()
+    private let messagesInputAccessoryView = MessagesInputAccessoryView()
 
 }
 
