@@ -16,31 +16,16 @@ class MessagesView: UIView {
 
     // MARK: Subviews
 
-    let collectionView: UICollectionView = Factory.collectionView
+    let collectionViewContainer = UIView(frame: .zero)
 
     private func loadSubviews() {
-        addSubview(collectionView)
+        addSubview(collectionViewContainer)
     }
 
     // MARK: Layout
 
     private func setupLayout() {
-        collectionView.snp.makeConstraints { $0.edges.equalToSuperview() }
-    }
-
-}
-
-private extension MessagesView {
-
-    struct Factory {
-
-        static var collectionView: UICollectionView {
-            let layout = UICollectionViewFlowLayout()
-            let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-            view.backgroundColor = .clear
-            return view
-        }
-
+        collectionViewContainer.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
 
 }
