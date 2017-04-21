@@ -54,6 +54,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3159A3001EAA65F500300CC1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				31B270241EA81C1A0036354B /* MessageCell.swift */,
+				3154AEF01EA906090058C26C /* MessagesInputAccessoryView.swift */,
+				31B270221EA8144D0036354B /* MessagesView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3159A3011EAA661700300CC1 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				31F689F91EA7FEC500D1D175 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		3159A3021EAA662300300CC1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3159A2FE1EAA630C00300CC1 /* MessageViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3159A3031EAA663100300CC1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3159A2F71EAA2E3000300CC1 /* MessageSectionController.swift */,
+				3154AEEE1EA8FBD00058C26C /* MessagesCollectionViewController.swift */,
+				31F689F21EA7FEC500D1D175 /* MessagesViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3159A3041EAA664000300CC1 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				3159A2F91EAA44B100300CC1 /* MessagesCollectionViewLayout.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
 		31B2701D1EA800670036354B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -65,15 +109,11 @@
 		31B2701E1EA800750036354B /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				31F689F91EA7FEC500D1D175 /* LaunchScreen.storyboard */,
-				31B270241EA81C1A0036354B /* MessageCell.swift */,
-				3159A2F71EAA2E3000300CC1 /* MessageSectionController.swift */,
-				3159A2FE1EAA630C00300CC1 /* MessageViewModel.swift */,
-				3154AEEE1EA8FBD00058C26C /* MessagesCollectionViewController.swift */,
-				3159A2F91EAA44B100300CC1 /* MessagesCollectionViewLayout.swift */,
-				3154AEF01EA906090058C26C /* MessagesInputAccessoryView.swift */,
-				31B270221EA8144D0036354B /* MessagesView.swift */,
-				31F689F21EA7FEC500D1D175 /* MessagesViewController.swift */,
+				3159A3031EAA663100300CC1 /* Controllers */,
+				3159A3041EAA664000300CC1 /* Layout */,
+				3159A3011EAA661700300CC1 /* Storyboards */,
+				3159A3021EAA662300300CC1 /* ViewModels */,
+				3159A3001EAA65F500300CC1 /* Views */,
 			);
 			path = UI;
 			sourceTree = "<group>";
