@@ -2,11 +2,15 @@ import IGListKit
 
 class MessageViewModel {
 
-    init(text: String) {
-        self.text = text
+    init(message: Message) {
+        self.message = message
     }
 
-    let text: String
+    let message: Message
+
+    var text: String {
+        return message.text
+    }
 
 }
 

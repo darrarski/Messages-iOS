@@ -35,7 +35,8 @@ class MessagesViewController: UIViewController {
         let jsonObject = try? JSONSerialization.jsonObject(with: jsonData, options: [])
         guard let jsonArray = jsonObject as? [[String]] else { fatalError() }
         let quotes = jsonArray.map { "\($0[0])\n(\($0[1]))" }
-        return quotes.map { MessageViewModel(text: $0) }
+        let messages = quotes.map { Message(text: $0) }
+        return messages.map { MessageViewModel(message: $0) }
     }
 
     // MARK: CollectionViewController
