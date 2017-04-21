@@ -1,18 +1,25 @@
 PODS:
+  - IGListKit (2.1.0):
+    - IGListKit/Default (= 2.1.0)
+  - IGListKit/Default (2.1.0):
+    - IGListKit/Diffing
+  - IGListKit/Diffing (2.1.0)
   - Reveal-SDK (8)
   - SnapKit (3.2.0)
   - SwiftLint (0.18.1)
 
 DEPENDENCIES:
+  - IGListKit (~> 2.1)
   - Reveal-SDK
   - SnapKit (~> 3.2)
   - SwiftLint (~> 0.18)
 
 SPEC CHECKSUMS:
+  IGListKit: b826c68ef7a4ae1626c09d4d3e1ea7a169e6c36e
   Reveal-SDK: 43be4e662864e937960d0d04d005135e29c4e53b
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftLint: b467d08f5b25dc3b3cfed243d8e1b74b91714c67
 
-PODFILE CHECKSUM: 5674c621cd386403a6623f20efa70565581751e0
+PODFILE CHECKSUM: d9c42dae0399aed4802d1f44084225d131e09daa
 
 COCOAPODS: 1.2.1
