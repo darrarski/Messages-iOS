@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class MessagesCell: UICollectionViewCell {
+class MessageCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -84,7 +84,7 @@ class MessagesCell: UICollectionViewCell {
 
 }
 
-private extension MessagesCell {
+private extension MessageCell {
 
     struct Factory {
 

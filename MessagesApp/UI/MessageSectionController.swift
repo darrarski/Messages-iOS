@@ -37,8 +37,8 @@ class MessageSectionController: IGListSectionController {
         return fittingSize.height
     }
 
-    private let cellPrototype: MessagesCell = {
-        let cell = MessagesCell(frame: .zero)
+    private let cellPrototype: MessageCell = {
+        let cell = MessageCell(frame: .zero)
         cell.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.translatesAutoresizingMaskIntoConstraints = false
         cell.setNeedsLayout()
@@ -48,7 +48,7 @@ class MessageSectionController: IGListSectionController {
 
     // MARK: Cell configuration
 
-    fileprivate func configureCell(_ cell: MessagesCell) {
+    fileprivate func configureCell(_ cell: MessageCell) {
         cell.label.text = message
         guard let index = collectionContext?.section(for: self) else { fatalError() }
         if index % 2 == 0 {
@@ -58,14 +58,14 @@ class MessageSectionController: IGListSectionController {
         }
     }
 
-    private func configureIncomingCell(_ cell: MessagesCell) {
+    private func configureIncomingCell(_ cell: MessageCell) {
         cell.bubblePosition = .left
         cell.bubbleView.backgroundColor = UIColor(red:0.9, green:0.9, blue:0.92, alpha:1)
         cell.label.textColor = .black
         cell.label.textAlignment = .left
     }
 
-    private func configureOutgoingCell(_ cell: MessagesCell) {
+    private func configureOutgoingCell(_ cell: MessageCell) {
         cell.bubblePosition = .right
         cell.bubbleView.backgroundColor = UIColor(red:0.01, green:0.48, blue:0.98, alpha:1)
         cell.label.textColor = .white
@@ -88,9 +88,9 @@ extension MessageSectionController: IGListSectionType {
 
     func cellForItem(at index: Int) -> UICollectionViewCell {
         guard let cell = collectionContext?.dequeueReusableCell(
-            of: MessagesCell.self,
+            of: MessageCell.self,
             for: self,
-            at: index) as? MessagesCell else { fatalError() }
+            at: index) as? MessageCell else { fatalError() }
         configureCell(cell)
         return cell
     }
