@@ -16,7 +16,7 @@ class MessagesCollectionViewLayout: UICollectionViewFlowLayout {
 
     private func modifiedAttributes(_ attr: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         guard let copy = attr.copy() as? UICollectionViewLayoutAttributes else { fatalError() }
-        copy.center = reversedPoint(for: copy.center)
+        copy.center = reversedPoint(for: attr.center)
         return copy
     }
 
