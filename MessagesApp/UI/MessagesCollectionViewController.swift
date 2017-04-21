@@ -74,7 +74,7 @@ extension MessagesCollectionViewController {
     struct Factory {
 
         static var collectionViewLayout: UICollectionViewFlowLayout {
-            return UICollectionViewFlowLayout()
+            return MessagesCollectionViewLayout()
         }
 
         static var listCollectionView: IGListCollectionView {
