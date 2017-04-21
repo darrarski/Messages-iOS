@@ -1,21 +1,18 @@
 PODS:
-  - Diff (0.5.3)
   - Reveal-SDK (8)
   - SnapKit (3.2.0)
   - SwiftLint (0.18.1)
 
 DEPENDENCIES:
-  - Diff (~> 0.5)
   - Reveal-SDK
   - SnapKit (~> 3.2)
   - SwiftLint (~> 0.18)
 
 SPEC CHECKSUMS:
-  Diff: befa1d19c32726b2b36ce915d98793e2fbde8dcc
   Reveal-SDK: 43be4e662864e937960d0d04d005135e29c4e53b
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftLint: b467d08f5b25dc3b3cfed243d8e1b74b91714c67
 
-PODFILE CHECKSUM: b76fec414ac710421fd904fe34836c24b5f08376
+PODFILE CHECKSUM: 5674c621cd386403a6623f20efa70565581751e0
 
 COCOAPODS: 1.2.1
