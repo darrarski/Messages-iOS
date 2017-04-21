@@ -1,5 +1,4 @@
 import UIKit
-import Diff
 
 class MessagesViewController: UIViewController {
 
@@ -25,31 +24,24 @@ class MessagesViewController: UIViewController {
         super.viewDidLoad()
         embedCollectionViewController()
         setupCollectionView()
-        DispatchQueue.main.async {
-            self.messages = self.allMessages
-        }
+        messages = loadMessages()
     }
 
     // MARK: Messages
 
-    fileprivate var messages = [String]() {
-        didSet {
-            guard isViewLoaded else { return }
-            collectionViewController.collectionView?.animateItemChanges(
-                oldData: oldValue,
-                newData: messages
-            )
-        }
-    }
+    var messages = [String]()
 
-    private let allMessages: [String] = {
+    private func loadMessages() -> [String] {
         let bundle = Bundle(for: MessagesViewController.self)
         guard let path = bundle.path(forResource: "quotes", ofType: "json") else { fatalError() }
         guard let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path)) else { fatalError() }
         let jsonObject = try? JSONSerialization.jsonObject(with: jsonData, options: [])
         guard let jsonArray = jsonObject as? [[String]] else { fatalError() }
-        return jsonArray.map { "\($0[0])\n(\($0[1]))" }
-    }()
+        let quotes = jsonArray.map { "\($0[0])\n(\($0[1]))" }
+        var messages = [String]()
+        (1...10).enumerated().forEach { _ in messages += quotes }
+        return messages
+    }
 
     // MARK: CollectionView
 
