@@ -9,7 +9,7 @@ class MessageSectionController: IGListSectionController {
         minimumInteritemSpacing = 10
     }
 
-    fileprivate(set) var message: String?
+    fileprivate(set) var viewModel: MessageViewModel?
 
     // MARK: Cell size
 
@@ -49,7 +49,7 @@ class MessageSectionController: IGListSectionController {
     // MARK: Cell configuration
 
     fileprivate func configureCell(_ cell: MessageCell) {
-        cell.label.text = message
+        cell.label.text = viewModel?.text
         guard let index = collectionContext?.section(for: self) else { fatalError() }
         if index % 2 == 0 {
             configureIncomingCell(cell)
@@ -96,8 +96,8 @@ extension MessageSectionController: IGListSectionType {
     }
 
     func didUpdate(to object: Any) {
-        guard let message = object as? String else { fatalError() }
-        self.message = message
+        guard let viewModel = object as? MessageViewModel else { fatalError() }
+        self.viewModel = viewModel
     }
 
     func didSelectItem(at index: Int) {}

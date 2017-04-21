@@ -27,6 +27,12 @@ class MessagesCollectionViewController: UICollectionViewController {
         setupList()
     }
 
+    // MARK: ViewModels
+
+    var messages = [MessageViewModel]() {
+        didSet { listAdapter.performUpdates(animated: true) }
+    }
+
     // MARK: List
 
     private let listUpdater = IGListAdapterUpdater()
@@ -40,12 +46,6 @@ class MessagesCollectionViewController: UICollectionViewController {
         listAdapter.dataSource = self
     }
 
-    // MARK: Data
-
-    var messages = [String]() {
-        didSet { listAdapter.performUpdates(animated: true) }
-    }
-
 }
 
 extension MessagesCollectionViewController: IGListAdapterDataSource {
@@ -56,7 +56,7 @@ extension MessagesCollectionViewController: IGListAdapterDataSource {
 
     func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
         switch object {
-        case is String:
+        case is MessageViewModel:
             return MessageSectionController()
         default:
             fatalError()

@@ -28,16 +28,14 @@ class MessagesViewController: UIViewController {
 
     // MARK: Messages
 
-    private func loadMessages() -> [String] {
+    private func loadMessages() -> [MessageViewModel] {
         let bundle = Bundle(for: MessagesViewController.self)
         guard let path = bundle.path(forResource: "quotes", ofType: "json") else { fatalError() }
         guard let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path)) else { fatalError() }
         let jsonObject = try? JSONSerialization.jsonObject(with: jsonData, options: [])
         guard let jsonArray = jsonObject as? [[String]] else { fatalError() }
         let quotes = jsonArray.map { "\($0[0])\n(\($0[1]))" }
-        var messages = [String]()
-        (1...10).enumerated().forEach { _ in messages += quotes }
-        return messages
+        return quotes.map { MessageViewModel(text: $0) }
     }
 
     // MARK: CollectionViewController
