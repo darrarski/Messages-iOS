@@ -2,7 +2,8 @@ import UIKit
 
 class MessagesViewController: UIViewController {
 
-    init() {
+    init(messagesService: MessagesService) {
+        self.messagesService = messagesService
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -23,20 +24,23 @@ class MessagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         embedCollectionViewController()
-        collectionViewController.messages = loadMessages()
+        loadMessages()
     }
 
     // MARK: Messages
 
-    private func loadMessages() -> [MessageViewModel] {
-        let bundle = Bundle(for: MessagesViewController.self)
-        guard let path = bundle.path(forResource: "quotes", ofType: "json") else { fatalError() }
-        guard let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path)) else { fatalError() }
-        let jsonObject = try? JSONSerialization.jsonObject(with: jsonData, options: [])
-        guard let jsonArray = jsonObject as? [[String]] else { fatalError() }
-        let quotes = jsonArray.map { "\($0[0])\n(\($0[1]))" }
-        let messages = quotes.map { Message(text: $0) }
-        return messages.map { MessageViewModel(message: $0) }
+    private func loadMessages() {
+        messagesService.fetchMessages { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let messages):
+                    self?.collectionViewController.messages = messages.map { MessageViewModel(message: $0) }
+
+                case .failure(let error):
+                    self?.presentError(error)
+                }
+            }
+        }
     }
 
     // MARK: CollectionViewController
@@ -61,5 +65,19 @@ class MessagesViewController: UIViewController {
     }
 
     private let messagesInputAccessoryView = MessagesInputAccessoryView()
+
+    // MARK: Private
+
+    private let messagesService: MessagesService
+
+    private func presentError(_ error: Error) {
+        let alertController = UIAlertController(title: "Error occured",
+                                                message: error.localizedDescription,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK",
+                                                style: .default,
+                                                handler: nil))
+        present(alertController, animated: true)
+    }
 
 }
