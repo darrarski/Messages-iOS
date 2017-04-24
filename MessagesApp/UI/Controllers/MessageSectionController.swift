@@ -20,12 +20,12 @@ class MessageSectionController: IGListSectionController {
     // MARK: Cell configuration
 
     fileprivate func configureCell(_ cell: MessageCell) {
-        cell.label.text = viewModel?.text
-        guard let index = collectionContext?.section(for: self) else { fatalError() }
-        if index % 2 == 0 {
-            configureIncomingCell(cell)
-        } else {
+        guard let viewModel = viewModel else { return }
+        cell.label.text = viewModel.text
+        if viewModel.isOutgoing {
             configureOutgoingCell(cell)
+        } else {
+            configureIncomingCell(cell)
         }
     }
 
