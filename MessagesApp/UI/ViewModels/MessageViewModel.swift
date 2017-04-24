@@ -2,9 +2,8 @@ import IGListKit
 
 class MessageViewModel {
 
-    init(message: Message, isOutgoing: Bool) {
+    init(message: Message) {
         self.message = message
-        self.isOutgoing = isOutgoing
     }
 
     let message: Message
@@ -13,19 +12,21 @@ class MessageViewModel {
         return message.text
     }
 
-    let isOutgoing: Bool
+    var isOutgoing: Bool {
+        return message.author == nil
+    }
 
 }
 
 extension MessageViewModel: IGListDiffable {
 
     func diffIdentifier() -> NSObjectProtocol {
-        return text as NSObjectProtocol
+        return message.uid as NSObjectProtocol
     }
 
     func isEqual(toDiffableObject object: IGListDiffable?) -> Bool {
         guard let other = object as? MessageViewModel else { return false }
-        return text == other.text
+        return message.uid == other.message.uid
     }
 
 }

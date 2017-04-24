@@ -34,9 +34,7 @@ class MessagesViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let messages):
-                    self?.collectionViewController.messages = messages.enumerated().map { (index, message) in
-                        return MessageViewModel(message: message, isOutgoing: index % 2 != 0)
-                    }
+                    self?.collectionViewController.messages = messages.map { MessageViewModel(message: $0) }
 
                 case .failure(let error):
                     self?.presentError(error)
