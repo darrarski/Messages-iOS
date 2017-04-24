@@ -5,8 +5,6 @@ class MessageSectionController: IGListSectionController {
     override init() {
         super.init()
         inset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-        minimumLineSpacing = 10
-        minimumInteritemSpacing = 10
     }
 
     fileprivate(set) var viewModel: MessageViewModel?
