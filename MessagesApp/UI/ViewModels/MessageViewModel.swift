@@ -2,8 +2,9 @@ import IGListKit
 
 class MessageViewModel {
 
-    init(message: Message) {
+    init(message: Message, isOutgoing: Bool) {
         self.message = message
+        self.isOutgoing = isOutgoing
     }
 
     let message: Message
@@ -11,6 +12,8 @@ class MessageViewModel {
     var text: String {
         return message.text
     }
+
+    let isOutgoing: Bool
 
 }
 
