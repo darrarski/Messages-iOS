@@ -24,16 +24,19 @@ class MessageCell: UICollectionViewCell {
         bubbleView.backgroundColor = .clear
         label.textColor = .darkGray
         label.textAlignment = .center
+        activityIndicator.stopAnimating()
     }
 
     // MARK: Subviews
 
     let bubbleView = Factory.bubbleView
     let label = Factory.label
+    let activityIndicator = Factory.activityIndicator
 
     private func loadSubviews() {
         contentView.addSubview(bubbleView)
         bubbleView.addSubview(label)
+        contentView.addSubview(activityIndicator)
     }
 
     // MARK: Layout
@@ -49,12 +52,18 @@ class MessageCell: UICollectionViewCell {
             case .some(.left):
                 bubbleViewRightConstraint.deactivate()
                 bubbleViewLeftConstraint.activate()
+                activityIndicatorRightConstraint.deactivate()
+                activityIndicatorLeftConstraint.activate()
             case .some(.right):
                 bubbleViewLeftConstraint.deactivate()
                 bubbleViewRightConstraint.activate()
+                activityIndicatorLeftConstraint.deactivate()
+                activityIndicatorRightConstraint.activate()
             case .none:
                 bubbleViewLeftConstraint.deactivate()
                 bubbleViewRightConstraint.deactivate()
+                activityIndicatorLeftConstraint.deactivate()
+                activityIndicatorRightConstraint.deactivate()
             }
         }
     }
@@ -77,10 +86,23 @@ class MessageCell: UICollectionViewCell {
         label.snp.makeConstraints {
             $0.edges.equalTo(UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
         }
+        activityIndicator.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+        }
+        activityIndicator.snp.makeConstraints {
+            activityIndicatorLeftConstraint = $0.left.equalTo(bubbleView.snp.right).offset(8).constraint
+        }
+        activityIndicatorLeftConstraint.deactivate()
+        activityIndicator.snp.makeConstraints {
+            activityIndicatorRightConstraint = $0.right.equalTo(bubbleView.snp.left).offset(-8).constraint
+        }
+        activityIndicatorRightConstraint.deactivate()
     }
 
     private var bubbleViewLeftConstraint: Constraint!
     private var bubbleViewRightConstraint: Constraint!
+    private var activityIndicatorRightConstraint: Constraint!
+    private var activityIndicatorLeftConstraint: Constraint!
 
 }
 
@@ -99,6 +121,12 @@ private extension MessageCell {
             let label = UILabel(frame: .zero)
             label.numberOfLines = 0
             return label
+        }
+
+        static var activityIndicator: UIActivityIndicatorView {
+            let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            view.hidesWhenStopped = true
+            return view
         }
 
     }
