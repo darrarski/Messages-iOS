@@ -91,8 +91,9 @@ extension MessagesInputAccessoryView {
 
         static var sendButton: UIButton {
             let button = UIButton(frame: .zero)
-            button.setTitle("Send", for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
             button.setTitleColor(UIColor(red:0.02, green:0.48, blue:0.96, alpha:1), for: .normal)
+            button.setTitle("Send", for: .normal)
             return button
         }
 
