@@ -83,7 +83,7 @@ extension MessagesInputAccessoryView {
         static var textView: UITextView {
             let textView = UITextView(frame: .zero)
             textView.layer.borderWidth = 0.5
-            textView.layer.borderColor = UIColor.black.cgColor
+            textView.layer.borderColor = UIColor.lightGray.cgColor
             textView.layer.cornerRadius = 5
             textView.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightRegular)
             return textView
