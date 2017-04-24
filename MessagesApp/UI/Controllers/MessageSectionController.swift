@@ -11,38 +11,9 @@ class MessageSectionController: IGListSectionController {
 
     fileprivate(set) var viewModel: MessageViewModel?
 
-    // MARK: Cell size
-
-    fileprivate func cellWidth() -> CGFloat {
-        guard let context = collectionContext else { fatalError() }
-        return context.containerSize.width - inset.left - inset.right
-    }
-
-    fileprivate func cellHeight(forWidth width: CGFloat) -> CGFloat {
-        cellPrototype.prepareForReuse()
-        configureCell(cellPrototype)
-        cellPrototype.bounds = {
-            var bounds = cellPrototype.bounds
-            bounds.size.width = width
-            return bounds
-        }()
-        cellPrototype.setNeedsLayout()
-        cellPrototype.layoutIfNeeded()
-        let targetSize = CGSize(width: width, height: 0)
-        let fittingSize = cellPrototype.systemLayoutSizeFitting(
-            targetSize,
-            withHorizontalFittingPriority: UILayoutPriorityDefaultHigh,
-            verticalFittingPriority: UILayoutPriorityFittingSizeLevel
-        )
-        return fittingSize.height
-    }
-
-    private let cellPrototype: MessageCell = {
+    fileprivate let cellPrototype: MessageCell = {
         let cell = MessageCell(frame: .zero)
-        cell.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.translatesAutoresizingMaskIntoConstraints = false
-        cell.setNeedsLayout()
-        cell.layoutIfNeeded()
+        cell.prepareForComputingHeight()
         return cell
     }()
 
@@ -81,8 +52,11 @@ extension MessageSectionController: IGListSectionType {
     }
 
     func sizeForItem(at index: Int) -> CGSize {
-        let width = cellWidth()
-        let height = cellHeight(forWidth: width)
+        guard let context = collectionContext else { fatalError() }
+        let width = context.containerSize.width - inset.left - inset.right
+        cellPrototype.prepareForReuse()
+        configureCell(cellPrototype)
+        let height = cellPrototype.computeHeight(forWidth: width)
         return CGSize(width: width, height: height)
     }
 
