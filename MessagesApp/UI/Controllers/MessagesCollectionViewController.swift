@@ -30,7 +30,12 @@ class MessagesCollectionViewController: UICollectionViewController {
     // MARK: ViewModels
 
     var messages = [MessageViewModel]() {
-        didSet { listAdapter.performUpdates(animated: true) }
+        didSet {
+            let reversedContentOffset = listCollectionView.reversedContentOffset
+            listAdapter.performUpdates(animated: false) { [weak self] _ in
+                self?.listCollectionView.reversedContentOffset = reversedContentOffset
+            }
+        }
     }
 
     // MARK: List
