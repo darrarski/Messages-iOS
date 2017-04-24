@@ -31,7 +31,7 @@ class MessagesInputAccessoryView: UIToolbar {
         updateTextViewHeight()
     }
 
-    private let maxTextViewHeight: CGFloat = 150
+    private let maxTextViewHeight: CGFloat = 100
 
     private func setupLayout() {
         translatesAutoresizingMaskIntoConstraints = false
