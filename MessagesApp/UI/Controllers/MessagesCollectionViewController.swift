@@ -38,6 +38,15 @@ class MessagesCollectionViewController: UICollectionViewController {
         }
     }
 
+    var outgoingMessages = [OutgoingMessageViewModel]() {
+        didSet {
+            let reversedContentOffset = listCollectionView.reversedContentOffset
+            listAdapter.performUpdates(animated: true) { [weak self] _ in
+                self?.listCollectionView.setReversedContentOffset(reversedContentOffset, animated: true)
+            }
+        }
+    }
+
     // MARK: List
 
     private let listUpdater = IGListAdapterUpdater()
@@ -56,13 +65,18 @@ class MessagesCollectionViewController: UICollectionViewController {
 extension MessagesCollectionViewController: IGListAdapterDataSource {
 
     func objects(for listAdapter: IGListAdapter) -> [IGListDiffable] {
-        return messages as [IGListDiffable]
+        var objects = [IGListDiffable]()
+        objects.append(contentsOf: outgoingMessages.reversed() as [IGListDiffable])
+        objects.append(contentsOf: messages as [IGListDiffable])
+        return objects
     }
 
     func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
         switch object {
         case is MessageViewModel:
             return MessageSectionController()
+        case is OutgoingMessageViewModel:
+            return OutgoingMessageSectionController()
         default:
             fatalError()
         }
