@@ -17,9 +17,11 @@ class MessagesInputAccessoryView: UIToolbar {
     // MARK: Subviews
 
     let textView = Factory.textView
+    let sendButton = Factory.sendButton
 
     private func loadSubviews() {
         addSubview(textView)
+        addSubview(sendButton)
     }
 
     // MARK: Layout
@@ -34,9 +36,16 @@ class MessagesInputAccessoryView: UIToolbar {
     private func setupLayout() {
         translatesAutoresizingMaskIntoConstraints = false
         textView.snp.makeConstraints {
-            $0.edges.equalTo(UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
             $0.height.equalTo(0)
+            $0.top.left.equalTo(8)
+            $0.bottom.equalTo(-8)
         }
+        sendButton.snp.makeConstraints {
+            $0.left.equalTo(textView.snp.right).offset(8)
+            $0.right.bottom.equalTo(-10)
+        }
+        textView.setContentHuggingPriority(UILayoutPriorityDefaultLow, for: .horizontal)
+        sendButton.setContentHuggingPriority(UILayoutPriorityDefaultHigh, for: .horizontal)
     }
 
     fileprivate func updateTextViewHeight() {
@@ -78,6 +87,13 @@ extension MessagesInputAccessoryView {
             textView.layer.cornerRadius = 5
             textView.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightRegular)
             return textView
+        }
+
+        static var sendButton: UIButton {
+            let button = UIButton(frame: .zero)
+            button.setTitle("Send", for: .normal)
+            button.setTitleColor(UIColor(red:0.02, green:0.48, blue:0.96, alpha:1), for: .normal)
+            return button
         }
 
     }
