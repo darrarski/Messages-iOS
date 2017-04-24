@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		310395971EAEA65B0096390A /* UICollectionViewCell_ComputeHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310395961EAEA65B0096390A /* UICollectionViewCell_ComputeHeight.swift */; };
 		3103959B1EAEB44B0096390A /* OutgoingMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103959A1EAEB44B0096390A /* OutgoingMessageViewModel.swift */; };
+		3103959D1EAEB5820096390A /* OutgoingMessageSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103959C1EAEB5820096390A /* OutgoingMessageSectionController.swift */; };
 		3128630C1EAE180800C6B202 /* UIScrollView_ReversedContentOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3128630B1EAE180800C6B202 /* UIScrollView_ReversedContentOffset.swift */; };
 		3154AEEF1EA8FBD00058C26C /* MessagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3154AEEE1EA8FBD00058C26C /* MessagesCollectionViewController.swift */; };
 		3154AEF11EA906090058C26C /* MessagesInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3154AEF01EA906090058C26C /* MessagesInputAccessoryView.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		310395961EAEA65B0096390A /* UICollectionViewCell_ComputeHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell_ComputeHeight.swift; sourceTree = "<group>"; };
 		3103959A1EAEB44B0096390A /* OutgoingMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingMessageViewModel.swift; sourceTree = "<group>"; };
+		3103959C1EAEB5820096390A /* OutgoingMessageSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingMessageSectionController.swift; sourceTree = "<group>"; };
 		3128630B1EAE180800C6B202 /* UIScrollView_ReversedContentOffset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollView_ReversedContentOffset.swift; sourceTree = "<group>"; };
 		3154AEEE1EA8FBD00058C26C /* MessagesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewController.swift; sourceTree = "<group>"; };
 		3154AEF01EA906090058C26C /* MessagesInputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesInputAccessoryView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				3159A2F71EAA2E3000300CC1 /* MessageSectionController.swift */,
 				3154AEEE1EA8FBD00058C26C /* MessagesCollectionViewController.swift */,
 				31F689F21EA7FEC500D1D175 /* MessagesViewController.swift */,
+				3103959C1EAEB5820096390A /* OutgoingMessageSectionController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				3159A30E1EAA93CC00300CC1 /* MessagesService.swift in Sources */,
 				3154AEEF1EA8FBD00058C26C /* MessagesCollectionViewController.swift in Sources */,
 				3159A3101EAA95C100300CC1 /* DemoMessagesService.swift in Sources */,
+				3103959D1EAEB5820096390A /* OutgoingMessageSectionController.swift in Sources */,
 				3159A30B1EAA69F600300CC1 /* Message.swift in Sources */,
 				310395971EAEA65B0096390A /* UICollectionViewCell_ComputeHeight.swift in Sources */,
 				31F689F11EA7FEC500D1D175 /* AppDelegate.swift in Sources */,
