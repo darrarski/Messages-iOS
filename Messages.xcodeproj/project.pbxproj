@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		310395971EAEA65B0096390A /* UICollectionViewCell_ComputeHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310395961EAEA65B0096390A /* UICollectionViewCell_ComputeHeight.swift */; };
+		3103959B1EAEB44B0096390A /* OutgoingMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3103959A1EAEB44B0096390A /* OutgoingMessageViewModel.swift */; };
 		3128630C1EAE180800C6B202 /* UIScrollView_ReversedContentOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3128630B1EAE180800C6B202 /* UIScrollView_ReversedContentOffset.swift */; };
 		3154AEEF1EA8FBD00058C26C /* MessagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3154AEEE1EA8FBD00058C26C /* MessagesCollectionViewController.swift */; };
 		3154AEF11EA906090058C26C /* MessagesInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3154AEF01EA906090058C26C /* MessagesInputAccessoryView.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		310395961EAEA65B0096390A /* UICollectionViewCell_ComputeHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell_ComputeHeight.swift; sourceTree = "<group>"; };
+		3103959A1EAEB44B0096390A /* OutgoingMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingMessageViewModel.swift; sourceTree = "<group>"; };
 		3128630B1EAE180800C6B202 /* UIScrollView_ReversedContentOffset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollView_ReversedContentOffset.swift; sourceTree = "<group>"; };
 		3154AEEE1EA8FBD00058C26C /* MessagesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewController.swift; sourceTree = "<group>"; };
 		3154AEF01EA906090058C26C /* MessagesInputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesInputAccessoryView.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				3159A2FE1EAA630C00300CC1 /* MessageViewModel.swift */,
+				3103959A1EAEB44B0096390A /* OutgoingMessageViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				3159A2FF1EAA630C00300CC1 /* MessageViewModel.swift in Sources */,
 				3159A2FA1EAA44B100300CC1 /* MessagesCollectionViewLayout.swift in Sources */,
 				31B270251EA81C1A0036354B /* MessageCell.swift in Sources */,
+				3103959B1EAEB44B0096390A /* OutgoingMessageViewModel.swift in Sources */,
 				3128630C1EAE180800C6B202 /* UIScrollView_ReversedContentOffset.swift in Sources */,
 				3154AEF11EA906090058C26C /* MessagesInputAccessoryView.swift in Sources */,
 				3159A30E1EAA93CC00300CC1 /* MessagesService.swift in Sources */,
