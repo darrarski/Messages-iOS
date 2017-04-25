@@ -101,6 +101,7 @@ extension MessagesCollectionViewController {
             let view = IGListCollectionView(frame: .zero, collectionViewLayout: layout)
             view.backgroundColor = .white
             view.keyboardDismissMode = .interactive
+            view.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
             return view
         }
 
