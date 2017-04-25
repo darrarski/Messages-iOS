@@ -4,6 +4,8 @@ class DemoMessagesService {
 
     var fetchDelay: TimeInterval = 3
     var fetchError: Error?
+    var sendDelay: TimeInterval = 2
+    var sendError: Error?
 
     fileprivate var messages: [Message] = {
         let bundle = Bundle(for: DemoMessagesService.self)
@@ -35,7 +37,15 @@ extension DemoMessagesService: MessagesService {
     }
 
     func sendMessage(_ text: String, completion: @escaping (MessagesServiceSendResult) -> Void) {
-        fatalError()
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + sendDelay) { [weak self] in
+            guard let `self` = self else { return }
+            if let error = self.sendError {
+                completion(.failure(error: error))
+                return
+            }
+            let message = Message(uid: UUID().uuidString, text: text, author: nil)
+            completion(.success(message: message))
+        }
     }
 
 }
