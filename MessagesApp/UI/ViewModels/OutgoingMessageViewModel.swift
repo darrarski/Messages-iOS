@@ -6,8 +6,16 @@ class OutgoingMessageViewModel {
         self.text = text
     }
 
-    let uid = UUID()
+    let uid: String = UUID().uuidString
     let text: String
+
+}
+
+extension OutgoingMessageViewModel: Equatable {
+
+    static func == (lhs: OutgoingMessageViewModel, rhs: OutgoingMessageViewModel) -> Bool {
+        return lhs.uid == rhs.uid
+    }
 
 }
 
@@ -19,7 +27,7 @@ extension OutgoingMessageViewModel: IGListDiffable {
 
     func isEqual(toDiffableObject object: IGListDiffable?) -> Bool {
         guard let other = object as? OutgoingMessageViewModel else { return false }
-        return uid == other.uid
+        return self == other
     }
 
 }

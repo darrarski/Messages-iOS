@@ -76,7 +76,7 @@ class MessagesViewController: UIViewController {
     }
 
     private func removeOutgoingMessage(_ viewModel: OutgoingMessageViewModel) {
-        guard let index = collectionViewController.outgoingMessages.index(where: { $0 === viewModel }) else {
+        guard let index = collectionViewController.outgoingMessages.index(where: { $0 == viewModel }) else {
             return
         }
         collectionViewController.outgoingMessages.remove(at: index)
