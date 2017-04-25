@@ -20,7 +20,7 @@ class OutgoingMessageSectionController: IGListSectionController {
     fileprivate func configureCell(_ cell: MessageCell) {
         cell.label.text = viewModel?.text
         cell.bubblePosition = .right
-        cell.bubbleView.backgroundColor = UIColor(red:0.01, green:0.48, blue:0.98, alpha:0.8)
+        cell.bubbleView.backgroundColor = UIColor(red:0.01, green:0.48, blue:0.98, alpha:0.6)
         cell.label.textColor = .white
         cell.label.textAlignment = .left
         cell.activityIndicator.startAnimating()
