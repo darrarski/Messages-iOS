@@ -34,4 +34,8 @@ extension DemoMessagesService: MessagesService {
         }
     }
 
+    func sendMessage(_ text: String, completion: @escaping (MessagesServiceSendResult) -> Void) {
+        fatalError()
+    }
+
 }
