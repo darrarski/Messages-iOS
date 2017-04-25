@@ -66,7 +66,7 @@ extension MessagesCollectionViewController: IGListAdapterDataSource {
 
     func objects(for listAdapter: IGListAdapter) -> [IGListDiffable] {
         var objects = [IGListDiffable]()
-        objects.append(contentsOf: outgoingMessages.reversed() as [IGListDiffable])
+        objects.append(contentsOf: outgoingMessages as [IGListDiffable])
         objects.append(contentsOf: messages as [IGListDiffable])
         return objects
     }
