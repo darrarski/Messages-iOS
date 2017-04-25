@@ -25,6 +25,15 @@ class MessagesViewController: UIViewController {
         super.viewDidLoad()
         embedCollectionViewController()
         loadMessages()
+        messagesInputAccessoryView.sendButton.addTarget(self, action: #selector(sendButtonAction), for: .touchUpInside)
+    }
+
+    // MARK: UI Actions
+
+    func sendButtonAction() {
+        guard let text = messagesInputAccessoryView.textView.text, !text.isEmpty else { return }
+        sendMessage(text)
+        messagesInputAccessoryView.textView.text = nil
     }
 
     // MARK: Messages
@@ -41,6 +50,36 @@ class MessagesViewController: UIViewController {
                 }
             }
         }
+    }
+
+    private func sendMessage(_ text: String) {
+        let outgoingMessageViewModel = createOutgoingMessage(text: text)
+        messagesService.sendMessage(text) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.removeOutgoingMessage(outgoingMessageViewModel)
+                switch result {
+                case .success(let message):
+                    let messageViewModel = MessageViewModel(message: message)
+                    self?.collectionViewController.messages.insert(messageViewModel, at: 0)
+
+                case .failure(let error):
+                    self?.presentError(error)
+                }
+            }
+        }
+    }
+
+    private func createOutgoingMessage(text: String) -> OutgoingMessageViewModel {
+        let viewModel = OutgoingMessageViewModel(text: text)
+        collectionViewController.outgoingMessages.insert(viewModel, at: 0)
+        return viewModel
+    }
+
+    private func removeOutgoingMessage(_ viewModel: OutgoingMessageViewModel) {
+        guard let index = collectionViewController.outgoingMessages.index(where: { $0 === viewModel }) else {
+            return
+        }
+        collectionViewController.outgoingMessages.remove(at: index)
     }
 
     // MARK: CollectionViewController
