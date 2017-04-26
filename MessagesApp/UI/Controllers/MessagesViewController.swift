@@ -38,12 +38,19 @@ class MessagesViewController: UIViewController {
         messagesInputAccessoryView.sendButton.addTarget(self,
                                                         action: #selector(sendButtonAction),
                                                         for: .touchUpInside)
+        collectionViewController.refreshControl.addTarget(self,
+                                                          action: #selector(refreshControlAction),
+                                                          for: .valueChanged)
     }
 
     func sendButtonAction() {
         guard let text = messagesInputAccessoryView.textView.text, !text.isEmpty else { return }
         sendMessage(text)
         messagesInputAccessoryView.textView.text = nil
+    }
+
+    func refreshControlAction() {
+        loadMessages()
     }
 
     // MARK: Messages
