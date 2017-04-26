@@ -32,7 +32,13 @@ extension DemoMessagesService: MessagesService {
                 completion(.failure(error: error))
                 return
             }
-            completion(.success(messages: self.messages))
+            let startIndex = page * perPage
+            guard startIndex >= self.messages.startIndex, perPage > 0 else {
+                completion(.success(messages: []))
+                return
+            }
+            let endIndex = min(startIndex + perPage, self.messages.endIndex)
+            completion(.success(messages: Array(self.messages[startIndex..<endIndex])))
         }
     }
 
