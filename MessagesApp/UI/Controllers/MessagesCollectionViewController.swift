@@ -33,21 +33,11 @@ class MessagesCollectionViewController: UICollectionViewController {
     // MARK: ViewModels
 
     var messages = [MessageViewModel]() {
-        didSet {
-            let reversedContentOffset = listCollectionView.reversedContentOffset
-            listAdapter.performUpdates(animated: false) { [weak self] _ in
-                self?.listCollectionView.reversedContentOffset = reversedContentOffset
-            }
-        }
+        didSet { updateList(animated: false) }
     }
 
     var outgoingMessages = [OutgoingMessageViewModel]() {
-        didSet {
-            let reversedContentOffset = listCollectionView.reversedContentOffset
-            listAdapter.performUpdates(animated: true) { [weak self] _ in
-                self?.listCollectionView.setReversedContentOffset(reversedContentOffset, animated: true)
-            }
-        }
+        didSet { updateList(animated: true) }
     }
 
     // MARK: List
@@ -61,6 +51,14 @@ class MessagesCollectionViewController: UICollectionViewController {
     private func setupList() {
         listAdapter.collectionView = listCollectionView
         listAdapter.dataSource = self
+    }
+
+    private func updateList(animated: Bool, completion: @escaping () -> Void = {}) {
+        let reversedContentOffset = listCollectionView.reversedContentOffset
+        listAdapter.performUpdates(animated: animated) { [weak self] _ in
+            self?.listCollectionView.setReversedContentOffset(reversedContentOffset, animated: animated)
+            completion()
+        }
     }
 
 }
