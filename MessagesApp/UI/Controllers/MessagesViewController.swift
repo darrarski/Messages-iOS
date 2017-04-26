@@ -43,8 +43,10 @@ class MessagesViewController: UIViewController {
     // MARK: Messages
 
     private func loadMessages() {
+        collectionViewController.refreshControl.beginRefreshing()
         messagesService.fetchMessages { [weak self] result in
             DispatchQueue.main.async {
+                self?.collectionViewController.refreshControl.endRefreshing()
                 switch result {
                 case .success(let messages):
                     self?.collectionViewController.messages = messages.map { MessageViewModel(message: $0) }
