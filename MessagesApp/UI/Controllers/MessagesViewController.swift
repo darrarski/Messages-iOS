@@ -23,10 +23,14 @@ class MessagesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        embedCollectionViewController()
-        loadMessages()
+        embed(childViewController: collectionViewController, inView: messagesView.collectionViewContainer)
         messagesInputAccessoryView.sendButton.addTarget(self, action: #selector(sendButtonAction), for: .touchUpInside)
+        loadMessages()
     }
+
+    // MARK: Child view controllers
+
+    let collectionViewController = MessagesCollectionViewController()
 
     // MARK: UI Actions
 
@@ -80,17 +84,6 @@ class MessagesViewController: UIViewController {
             return
         }
         collectionViewController.outgoingMessages.remove(at: index)
-    }
-
-    // MARK: CollectionViewController
-
-    let collectionViewController = MessagesCollectionViewController()
-
-    private func embedCollectionViewController() {
-        addChildViewController(collectionViewController)
-        messagesView.collectionViewContainer.addSubview(collectionViewController.view)
-        collectionViewController.view.snp.makeConstraints { $0.edges.equalToSuperview() }
-        collectionViewController.didMove(toParentViewController: self)
     }
 
     // MARK: Input Accessory View
