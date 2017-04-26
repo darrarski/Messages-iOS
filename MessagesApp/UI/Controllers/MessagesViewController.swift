@@ -24,7 +24,7 @@ class MessagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         embed(childViewController: collectionViewController, inView: messagesView.collectionViewContainer)
-        messagesInputAccessoryView.sendButton.addTarget(self, action: #selector(sendButtonAction), for: .touchUpInside)
+        setupActions()
         loadMessages()
     }
 
@@ -33,6 +33,12 @@ class MessagesViewController: UIViewController {
     let collectionViewController = MessagesCollectionViewController()
 
     // MARK: UI Actions
+
+    private func setupActions() {
+        messagesInputAccessoryView.sendButton.addTarget(self,
+                                                        action: #selector(sendButtonAction),
+                                                        for: .touchUpInside)
+    }
 
     func sendButtonAction() {
         guard let text = messagesInputAccessoryView.textView.text, !text.isEmpty else { return }
