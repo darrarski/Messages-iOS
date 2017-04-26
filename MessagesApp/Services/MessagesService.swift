@@ -1,7 +1,7 @@
 import Foundation
 
 protocol MessagesService {
-    func fetchMessages(completion: @escaping (MessagesServiceFetchResult) -> Void)
+    func fetchMessages(page: Int, perPage: Int, completion: @escaping (MessagesServiceFetchResult) -> Void)
     func sendMessage(_ text: String, completion: @escaping (MessagesServiceSendResult) -> Void)
 }
 

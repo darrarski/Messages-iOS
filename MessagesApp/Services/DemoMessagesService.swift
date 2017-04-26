@@ -25,7 +25,7 @@ class DemoMessagesService {
 
 extension DemoMessagesService: MessagesService {
 
-    func fetchMessages(completion: @escaping (MessagesServiceFetchResult) -> Void) {
+    func fetchMessages(page: Int, perPage: Int, completion: @escaping (MessagesServiceFetchResult) -> Void) {
         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + fetchDelay) { [weak self] in
             guard let `self` = self else { return }
             if let error = self.fetchError {

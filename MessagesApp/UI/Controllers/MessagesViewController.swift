@@ -57,7 +57,7 @@ class MessagesViewController: UIViewController {
 
     private func loadMessages() {
         collectionViewController.refreshControl.beginRefreshing()
-        messagesService.fetchMessages { [weak self] result in
+        messagesService.fetchMessages(page: 0, perPage: 10) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let messages):
