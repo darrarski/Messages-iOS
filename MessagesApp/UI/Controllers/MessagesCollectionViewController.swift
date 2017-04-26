@@ -17,9 +17,12 @@ class MessagesCollectionViewController: UICollectionViewController {
         return collectionView as? IGListCollectionView
     }
 
+    let refreshControl = UIRefreshControl()
+
     override func loadView() {
         super.loadView()
         collectionView = Factory.listCollectionView
+        collectionView?.refreshControl = refreshControl
     }
 
     override func viewDidLoad() {
