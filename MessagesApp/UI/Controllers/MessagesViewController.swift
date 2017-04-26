@@ -52,10 +52,11 @@ class MessagesViewController: UIViewController {
         collectionViewController.refreshControl.beginRefreshing()
         messagesService.fetchMessages { [weak self] result in
             DispatchQueue.main.async {
-                self?.collectionViewController.refreshControl.endRefreshing()
                 switch result {
                 case .success(let messages):
-                    self?.collectionViewController.messages = messages.map { MessageViewModel(message: $0) }
+                    self?.collectionViewController.updateMessages(messages.map { MessageViewModel(message: $0) }) {
+                        self?.collectionViewController.refreshControl.endRefreshing()
+                    }
 
                 case .failure(let error):
                     self?.presentError(error)
@@ -65,33 +66,21 @@ class MessagesViewController: UIViewController {
     }
 
     private func sendMessage(_ text: String) {
-        let outgoingMessageViewModel = createOutgoingMessage(text: text)
+        let outgoingMessageViewModel = OutgoingMessageViewModel(text: text)
+        collectionViewController.insertOutgoingMessage(outgoingMessageViewModel)
         messagesService.sendMessage(text) { [weak self] result in
             DispatchQueue.main.async {
-                self?.removeOutgoingMessage(outgoingMessageViewModel)
+                self?.collectionViewController.removeOutgoingMessage(outgoingMessageViewModel)
                 switch result {
                 case .success(let message):
                     let messageViewModel = MessageViewModel(message: message)
-                    self?.collectionViewController.messages.insert(messageViewModel, at: 0)
+                    self?.collectionViewController.insertMessage(messageViewModel)
 
                 case .failure(let error):
                     self?.presentError(error)
                 }
             }
         }
-    }
-
-    private func createOutgoingMessage(text: String) -> OutgoingMessageViewModel {
-        let viewModel = OutgoingMessageViewModel(text: text)
-        collectionViewController.outgoingMessages.insert(viewModel, at: 0)
-        return viewModel
-    }
-
-    private func removeOutgoingMessage(_ viewModel: OutgoingMessageViewModel) {
-        guard let index = collectionViewController.outgoingMessages.index(where: { $0 == viewModel }) else {
-            return
-        }
-        collectionViewController.outgoingMessages.remove(at: index)
     }
 
     // MARK: Input Accessory View

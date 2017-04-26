@@ -32,12 +32,28 @@ class MessagesCollectionViewController: UICollectionViewController {
 
     // MARK: ViewModels
 
-    var messages = [MessageViewModel]() {
-        didSet { updateList(animated: false) }
+    private(set) var messages = [MessageViewModel]()
+    private(set) var outgoingMessages = [OutgoingMessageViewModel]()
+
+    func updateMessages(_ newMessages: [MessageViewModel], completion: @escaping () -> Void = {}) {
+        messages = newMessages
+        updateList(animated: false, completion: completion)
     }
 
-    var outgoingMessages = [OutgoingMessageViewModel]() {
-        didSet { updateList(animated: true) }
+    func insertMessage(_ message: MessageViewModel, completion: @escaping () -> Void = {}) {
+        messages.insert(message, at: 0)
+        updateList(animated: false, completion: completion)
+    }
+
+    func insertOutgoingMessage(_ message: OutgoingMessageViewModel) {
+        outgoingMessages.insert(message, at: 0)
+        updateList(animated: true)
+    }
+
+    func removeOutgoingMessage(_ message: OutgoingMessageViewModel) {
+        guard let index = outgoingMessages.index(where: { $0 == message }) else { return }
+        outgoingMessages.remove(at: index)
+        updateList(animated: true)
     }
 
     // MARK: List
