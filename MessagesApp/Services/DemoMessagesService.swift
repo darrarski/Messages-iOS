@@ -33,11 +33,11 @@ extension DemoMessagesService: MessagesService {
                 return
             }
             let startIndex = page * perPage
-            guard startIndex >= self.messages.startIndex, perPage > 0 else {
+            let endIndex = min(startIndex + perPage, self.messages.endIndex)
+            guard perPage > 0, startIndex >= self.messages.startIndex, endIndex > startIndex else {
                 completion(.success(messages: []))
                 return
             }
-            let endIndex = min(startIndex + perPage, self.messages.endIndex)
             completion(.success(messages: Array(self.messages[startIndex..<endIndex])))
         }
     }
