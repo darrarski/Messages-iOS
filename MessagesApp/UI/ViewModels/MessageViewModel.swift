@@ -18,6 +18,14 @@ class MessageViewModel {
 
 }
 
+extension MessageViewModel: Equatable {
+
+    static func == (lhs: MessageViewModel, rhs: MessageViewModel) -> Bool {
+        return lhs.message.uid == rhs.message.uid
+    }
+
+}
+
 extension MessageViewModel: IGListDiffable {
 
     func diffIdentifier() -> NSObjectProtocol {
@@ -26,7 +34,7 @@ extension MessageViewModel: IGListDiffable {
 
     func isEqual(toDiffableObject object: IGListDiffable?) -> Bool {
         guard let other = object as? MessageViewModel else { return false }
-        return message.uid == other.message.uid
+        return self == other
     }
 
 }
