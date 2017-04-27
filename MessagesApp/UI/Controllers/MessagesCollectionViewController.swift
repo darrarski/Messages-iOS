@@ -36,22 +36,28 @@ class MessagesCollectionViewController: UICollectionViewController {
     private(set) var outgoingMessages = [OutgoingMessageViewModel]()
 
     func updateMessages(_ newMessages: [MessageViewModel], completion: @escaping () -> Void = {}) {
-        messages = newMessages
+        messages = newMessages.uniqueElements
         updateList(animated: false, completion: completion)
     }
 
     func appendMessages(_ newMessages: [MessageViewModel], completion: @escaping () -> Void = {}) {
+        var messages = self.messages
         messages.append(contentsOf: newMessages)
+        self.messages = messages.uniqueElements
         updateList(animated: false, completion: completion)
     }
 
     func insertMessage(_ message: MessageViewModel, completion: @escaping () -> Void = {}) {
+        var messages = self.messages
         messages.insert(message, at: 0)
+        self.messages = messages.uniqueElements
         updateList(animated: false, completion: completion)
     }
 
     func insertOutgoingMessage(_ message: OutgoingMessageViewModel) {
+        var outgoingMessages = self.outgoingMessages
         outgoingMessages.insert(message, at: 0)
+        self.outgoingMessages = outgoingMessages.uniqueElements
         updateList(animated: true)
     }
 
