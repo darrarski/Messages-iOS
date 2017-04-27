@@ -55,13 +55,19 @@ class MessagesViewController: UIViewController {
 
     // MARK: Messages
 
+    private let messagesPerPage = 10
+
+    private var nextMessagesPage: Int {
+        return Int(floor(Double(collectionViewController.messages.count / messagesPerPage)))
+    }
+
     private func loadMessages() {
         collectionViewController.refreshControl.beginRefreshing()
-        messagesService.fetchMessages(page: 0, perPage: 10) { [weak self] result in
+        messagesService.fetchMessages(page: nextMessagesPage, perPage: messagesPerPage) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let messages):
-                    self?.collectionViewController.updateMessages(messages.map { MessageViewModel(message: $0) }) {
+                    self?.collectionViewController.appendMessages(messages.map { MessageViewModel(message: $0) }) {
                         self?.collectionViewController.refreshControl.endRefreshing()
                     }
 
