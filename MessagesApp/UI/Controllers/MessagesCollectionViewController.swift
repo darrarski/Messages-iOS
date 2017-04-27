@@ -40,6 +40,11 @@ class MessagesCollectionViewController: UICollectionViewController {
         updateList(animated: false, completion: completion)
     }
 
+    func appendMessages(_ newMessages: [MessageViewModel], completion: @escaping () -> Void = {}) {
+        messages.append(contentsOf: newMessages)
+        updateList(animated: false, completion: completion)
+    }
+
     func insertMessage(_ message: MessageViewModel, completion: @escaping () -> Void = {}) {
         messages.insert(message, at: 0)
         updateList(animated: false, completion: completion)
