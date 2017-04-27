@@ -25,7 +25,7 @@ class MessagesViewController: UIViewController {
         super.viewDidLoad()
         embed(childViewController: collectionViewController, inView: messagesView.collectionViewContainer)
         setupActions()
-        loadMessages()
+        loadMoreMessages()
     }
 
     // MARK: Child view controllers
@@ -50,7 +50,7 @@ class MessagesViewController: UIViewController {
     }
 
     func refreshControlAction() {
-        loadMessages()
+        loadMoreMessages()
     }
 
     // MARK: Messages
@@ -61,7 +61,7 @@ class MessagesViewController: UIViewController {
         return Int(floor(Double(collectionViewController.messages.count / messagesPerPage)))
     }
 
-    private func loadMessages() {
+    private func loadMoreMessages() {
         collectionViewController.refreshControl.beginRefreshing()
         messagesService.fetchMessages(page: nextMessagesPage, perPage: messagesPerPage) { [weak self] result in
             DispatchQueue.main.async {
