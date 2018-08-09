@@ -5,6 +5,7 @@ class MessagesInputAccessoryView: UIToolbar {
 
     init() {
         super.init(frame: .zero)
+        layoutIfNeeded()
         loadSubviews()
         setupLayout()
         textView.delegate = self
@@ -36,7 +37,6 @@ class MessagesInputAccessoryView: UIToolbar {
     private func setupLayout() {
         translatesAutoresizingMaskIntoConstraints = false
         textView.snp.makeConstraints {
-            $0.height.equalTo(0)
             $0.top.left.equalTo(8)
             $0.bottom.equalTo(-8)
         }
@@ -92,7 +92,7 @@ extension MessagesInputAccessoryView {
         static var sendButton: UIButton {
             let button = UIButton(frame: .zero)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
-            button.setTitleColor(UIColor(red:0.02, green:0.48, blue:0.96, alpha:1), for: .normal)
+            button.setTitleColor(UIColor(red: 0.02, green: 0.48, blue: 0.96, alpha: 1), for: .normal)
             button.setTitle("Send", for: .normal)
             return button
         }
