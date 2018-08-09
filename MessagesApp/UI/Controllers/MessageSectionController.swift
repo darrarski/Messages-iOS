@@ -29,14 +29,14 @@ class MessageSectionController: IGListSectionController {
 
     private func configureIncomingCell(_ cell: MessageCell) {
         cell.bubblePosition = .left
-        cell.bubbleView.backgroundColor = UIColor(red:0.9, green:0.9, blue:0.92, alpha:1)
+        cell.bubbleView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.92, alpha: 1)
         cell.label.textColor = .black
         cell.label.textAlignment = .left
     }
 
     private func configureOutgoingCell(_ cell: MessageCell) {
         cell.bubblePosition = .right
-        cell.bubbleView.backgroundColor = UIColor(red:0.01, green:0.48, blue:0.98, alpha:1)
+        cell.bubbleView.backgroundColor = UIColor(red: 0.01, green: 0.48, blue: 0.98, alpha: 1)
         cell.label.textColor = .white
         cell.label.textAlignment = .left
     }
