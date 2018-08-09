@@ -5,6 +5,7 @@ class MessagesInputAccessoryView: UIToolbar {
 
     init() {
         super.init(frame: .zero)
+        layoutIfNeeded()
         loadSubviews()
         setupLayout()
         textView.delegate = self
@@ -36,7 +37,6 @@ class MessagesInputAccessoryView: UIToolbar {
     private func setupLayout() {
         translatesAutoresizingMaskIntoConstraints = false
         textView.snp.makeConstraints {
-            $0.height.equalTo(0)
             $0.top.left.equalTo(8)
             $0.bottom.equalTo(-8)
         }
